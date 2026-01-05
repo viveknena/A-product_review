@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review - Product Review Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Product Review</h1>
+        <p class="subtitle">Share your experience with the community</p>
+        
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="productName"><i class="fas fa-box"></i> Product Name</label>
+                <input type="text" id="productName" placeholder="Enter product name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="productCategory"><i class="fas fa-tags"></i> Category</label>
+                <select id="productCategory" required>
+                    <option value="">Select Category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home & Garden</option>
+                    <option value="books">Books & Media</option>
+                    <option value="beauty">Beauty & Health</option>
+                    <option value="sports">Sports & Outdoors</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="productDescription"><i class="fas fa-align-left"></i> Product Description</label>
+                <textarea id="productDescription" placeholder="Describe the product..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-star"></i> Your Rating</label>
+                <div class="star-rating">
+                    <span class="star" data-value="1">☆</span>
+                    <span class="star" data-value="2">☆</span>
+                    <span class="star" data-value="3">☆</span>
+                    <span class="star" data-value="4">☆</span>
+                    <span class="star" data-value="5">☆</span>
+                </div>
+                <input type="hidden" id="rating" value="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="reviewTitle"><i class="fas fa-heading"></i> Review Title</label>
+                <input type="text" id="reviewTitle" placeholder="Summarize your review" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="reviewText"><i class="fas fa-edit"></i> Detailed Review</label>
+                <textarea id="reviewText" placeholder="Share your detailed experience..." rows="5" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-camera"></i> Product Photo</label>
+                <div class="photo-upload" onclick="document.getElementById('photoInput').click()">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 48px; color: #667eea;"></i>
+                    <p>Click to upload product photo</p>
+                    <p style="font-size: 12px; color: #666;">Max size: 5MB</p>
+                    <img id="photoPreview" class="photo-preview" alt="Preview">
+                </div>
+                <input type="file" id="photoInput" accept="image/*" style="display: none;">
+            </div>
+            
+            <button type="submit" class="btn">Submit Review</button>
+            <button type="button" class="btn btn-secondary" onclick="generateAIReview()">
+                <i class="fas fa-robot"></i> Get AI Review Suggestions
+            </button>
+        </form>
+        
+        <div class="links" style="margin-top: 30px;">
+            <a href="dashboard.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle -->
+    <div class="chat-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <h3>Review Assistant</h3>
+            <i class="fas fa-times" onclick="toggleChatbot()"></i>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chatbot-message">
+                I can help you write a great review! Tell me about the product and I'll suggest improvements.
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask for review help...">
+            <button class="btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

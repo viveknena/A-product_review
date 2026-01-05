@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Product Review Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container dashboard">
+        <div class="header">
+            <h1>Product Review Dashboard</h1>
+            <div>
+                <span style="margin-right: 20px;">Welcome, User!</span>
+                <button class="btn" onclick="window.location.href='add-review.html'">
+                    <i class="fas fa-plus"></i> Add Review
+                </button>
+                <button class="btn btn-secondary" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="searchProducts" placeholder="Search products or reviews...">
+        </div>
+        
+        <h2>Recent Reviews</h2>
+        <div id="reviewsContainer">
+            <!-- Reviews will be loaded here -->
+            <div class="review-card">
+                <div class="review-header">
+                    <h3>iPhone 15 Pro</h3>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <p><strong>Category:</strong> Electronics</p>
+                <p>"Excellent phone with amazing camera quality and battery life."</p>
+                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                     alt="iPhone 15 Pro" class="product-image">
+                <div class="ai-summary">
+                    <strong>AI Summary:</strong> This review highlights the camera and battery as standout features. The reviewer seems very satisfied with these aspects.
+                </div>
+                <div style="margin-top: 15px; color: #666; font-size: 14px;">
+                    Reviewed by: JohnDoe • 2 days ago
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <h3>Running Shoes X500</h3>
+                    <div class="rating">★★★☆☆</div>
+                </div>
+                <p><strong>Category:</strong> Sports</p>
+                <p>"Comfortable but not very durable. Started wearing out after 3 months of regular use."</p>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                     alt="Running Shoes" class="product-image">
+                <div class="ai-summary">
+                    <strong>AI Summary:</strong> Mixed review focusing on initial comfort vs long-term durability. Suggests quality issues after extended use.
+                </div>
+                <div style="margin-top: 15px; color: #666; font-size: 14px;">
+                    Reviewed by: JaneSmith • 1 week ago
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle -->
+    <div class="chat-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <h3>Review Assistant</h3>
+            <i class="fas fa-times" onclick="toggleChatbot()"></i>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chatbot-message">
+                I can analyze reviews and help you understand product trends. Try asking: "What are people saying about smartphones?" or "Find reviews about durability issues."
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask about reviews...">
+            <button class="btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
